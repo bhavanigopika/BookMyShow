@@ -15,7 +15,7 @@ public class ShowSeat extends BaseModel{
     private Show show;
     @ManyToOne
     private Seat seat;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.ORDINAL )
     private ShowSeatStatus showSeatStatus;
 }
 /*
@@ -24,9 +24,9 @@ show : seat
 1 : m
 m : 1 because same seat available in different show also...show is responsible for movie, screen, feature, location, theatre, time and all...
 -----
-m : m -> So, we have created showSeat mapping classclass
+m : m -> So, we have created showSeat mapping class
 
-We added status of showSeat here because, in Seat class, if status mentioned then it represent for the particular seatNumber only
+We added status of showSeat here because, in Seat class, if status mentioned then it represent for the particular seatNumber.
 But same seatNo exist in every show also...
 
 In ShowSeat class -> we mentioned status with Show and Seat also -> it means that this seat is exist for this particular show or not...
