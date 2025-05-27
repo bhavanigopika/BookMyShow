@@ -11,10 +11,12 @@ import java.util.Optional;
 public class UserService {
     UserRepository userRepository;
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
     UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
+
     public User signUp(String name, String email, String password){
         Optional<User> optionalUser = userRepository.findByEmail(email);
 

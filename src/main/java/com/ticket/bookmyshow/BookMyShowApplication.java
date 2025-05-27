@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @SpringBootApplication
 @EnableJpaAuditing
 public class BookMyShowApplication  implements CommandLineRunner {
-    //@Autowired or line no: 16,17,18
+    //@Autowired or line no: 18,19,20
     private UserController userController;
 
     public BookMyShowApplication(UserController userController) {
@@ -31,4 +31,6 @@ public class BookMyShowApplication  implements CommandLineRunner {
         SignUpResponseDTO signUpResponseDTO = userController.signUp(signUpRequestDTO);
 
     }
+
+
 }
