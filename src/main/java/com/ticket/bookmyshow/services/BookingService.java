@@ -36,10 +36,10 @@ public class BookingService {
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
     public Booking bookMovie(Long userId, Long showId, List<Long> showSeatIdList) throws UserNotFoundException, ShowNotFoundException, ShowSeatsNoLongerAvailableException {
-        //Approach 2:
+        //Approach 2: Like double check locking
         /*
             1) Get the user object with the user id
-            2) Get the sshow object with the show id
+            2) Get the show object with the show id
             3) Get all the show seat objects from the showSeatIdList
             4) Now, check if all the seats are available…
                         a. If no, then throw an exception
