@@ -9,6 +9,7 @@ import com.ticket.bookmyshow.models.Show;
 import com.ticket.bookmyshow.models.ShowSeat;
 import com.ticket.bookmyshow.models.ShowSeatStatus;
 import com.ticket.bookmyshow.models.User;
+import com.ticket.bookmyshow.repositories.BookingRepository;
 import com.ticket.bookmyshow.repositories.ShowRepository;
 import com.ticket.bookmyshow.repositories.ShowSeatRepository;
 import com.ticket.bookmyshow.repositories.UserRepository;
@@ -25,13 +26,16 @@ public class BookingService {
     ShowRepository showRepository;
     ShowSeatRepository showSeatRepository;
     PriceCalculationService priceCalculationService;
+    BookingRepository bookingRepository;
 
     //inject user repository object by constructorDependency injection
-    public BookingService(UserRepository userRepository, ShowRepository showRepository, ShowSeatRepository ShowSeatRepository, PriceCalculationService priceCalculationService) {
+    public BookingService(UserRepository userRepository, ShowRepository showRepository, ShowSeatRepository ShowSeatRepository, PriceCalculationService priceCalculationService, BookingRepository bookingRepository) {
         this.userRepository = userRepository;
         this.showRepository = showRepository;
         this.showSeatRepository = ShowSeatRepository;
         this.priceCalculationService = priceCalculationService;
+        this.bookingRepository = bookingRepository;
+
     }
 
     @Transactional(isolation = Isolation.SERIALIZABLE)
@@ -140,6 +144,6 @@ public class BookingService {
         Controller see the catch block and see the responseStatus as FAILED,
         and controller tells the client the status as FAILED, it means request is FAILED
          */
-        return booking;
+        return bookingRepository.save(booking);
     }
 }
